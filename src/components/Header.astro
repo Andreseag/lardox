@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import myImage from "../../public/images/Logo-LARDOX.png";
+---
+
+<header class="header flex justify-center">
+  <div
+    class="header__container w-11/12 flex justify-between items-center mt-10"
+  >
+    <div class="header__contact text-white text-2xl hover:underline">
+      <a href="">CONTACTO</a>
+    </div>
+    <div class="header__logo max-w-[420px]">
+      <a href="/" class="header__logo-link">
+        <Image src={myImage} alt="Logo" />
+      </a>
+    </div>
+    <div class="header__info text-white text-2xl hover:underline">
+      <a href="">INFO</a>
+    </div>
+  </div>
+</header>

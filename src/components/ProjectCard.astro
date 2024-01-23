@@ -1,0 +1,90 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  image: string;
+  gif: string;
+  index: number;
+}
+
+const { href, title, image, gif, index } = Astro.props;
+---
+
+<div
+  class:list={[
+    "project-card flex items-stretch",
+    { big: index === 6 || index === 14 },
+  ]}
+>
+  <a
+    href={href}
+    class="cursor-pointer w-full flex flex-col justify-stretch relative"
+  >
+    <h3 class="project-card__title text-white text-xs">
+      <span class="mr-3">0{index + 1}</span>{" "}
+      {title}
+    </h3>
+    <div
+      class="project-card__image w-full h-auto"
+      style={{
+        backgroundImage: `url(${image})`,
+      }}
+    >
+    </div>
+    <div
+      class="project-card__gif w-full h-auto"
+      style={{
+        backgroundImage: `url(${gif})`,
+      }}
+    >
+    </div>
+  </a>
+</div>
+<style>
+  .project-card {
+    grid-column-end: span 1;
+    grid-row-end: span 1;
+    min-height: 17vw;
+  }
+
+  .project-card:hover .project-card__gif {
+    transition: opacity 0.5s;
+    opacity: 1;
+  }
+
+  .project-card__image,
+  .project-card__gif {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 62.6%;
+    transition: opacity 0.49s;
+  }
+
+  .project-card__image {
+    /* background-image: url(../../public/images/tengo-tu-love.png); */
+    background-color: #161616;
+  }
+  .project-card__gif {
+    /* background-image: url(https://ligthelm.work/static/img/i-am-you.gif); */
+    margin-top: -62.6%;
+    opacity: 0;
+  }
+
+  .big {
+    grid-column-end: span 2;
+    grid-row-end: span 2;
+    min-height: 34vw;
+  }
+
+  .big .project-card__image,
+  .big .project-card__gif {
+    position: absolute;
+    height: calc(100% - (0.783vw + 20px));
+    padding-bottom: 0;
+    margin-top: 0;
+    top: calc(0.7483vw + 14.6px);
+    width: 100%;
+  }
+</style>
