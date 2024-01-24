@@ -20,7 +20,7 @@ const { href, title, image, gif, index } = Astro.props;
     href={href}
     class="cursor-pointer w-full flex flex-col justify-stretch relative"
   >
-    <h3 class="project-card__title text-white text-xs">
+    <h3 class="project-card__title text-white">
       <span class="mr-3">0{index + 1}</span>{" "}
       {title}
     </h3>
@@ -41,6 +41,10 @@ const { href, title, image, gif, index } = Astro.props;
   </a>
 </div>
 <style>
+  h3 {
+    font-size: 0.78125vw;
+  }
+
   .project-card {
     grid-column-end: span 1;
     grid-row-end: span 1;

@@ -6,7 +6,7 @@ import projectsData from "../data/projects.json";
 
 <Layout title="Welcome to Astro.">
   <main class="mx-4">
-    <section class="project-list grid grid-cols-4 gap-4 mt-20">
+    <section class="project-list grid grid-cols-2 md:grid-cols-4 gap-4 mt-20">
       {
         projectsData.map((project, i) => (
           <ProjectCard
