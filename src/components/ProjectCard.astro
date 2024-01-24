@@ -1,4 +1,6 @@
 ---
+import { getImage } from "astro:assets";
+
 interface Props {
   href: string;
   title: string;
@@ -8,6 +10,16 @@ interface Props {
 }
 
 const { href, title, image, gif, index } = Astro.props;
+
+// const optimizedBackgroundImage = await getImage({
+//   src: image,
+//   format: "avif",
+// });
+
+// const optimizedBackgroundGif = await getImage({
+//   src: image,
+//   format: "git",
+// });
 ---
 
 <div
@@ -29,16 +41,12 @@ const { href, title, image, gif, index } = Astro.props;
     >
       <div
         class="project-card__image w-full h-full"
-        style={{
-          backgroundImage: `url(${image})`,
-        }}
+        style={`background-image: url(${image});`}
       >
       </div>
       <div
         class="project-card__gif w-full h-full"
-        style={{
-          backgroundImage: `url(${gif})`,
-        }}
+        style={`background-image: url(${gif});`}
       >
       </div>
     </div>
