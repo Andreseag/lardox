@@ -2,61 +2,61 @@
   {
     "name": "SHOWREEL 2023 ",
     "url_image": "../../public/images/showreel.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/showreel-gif.gif",
     "slug": "test"
   },
   {
     "name": "DELAY - “COVER” TABACO Y CHANEL",
     "url_image": "../../public/images/tabaco-y-chanel.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/tabaco-y-chanel-gif.gif",
     "slug": "test"
   },
   {
     "name": "DELAY - “COVER” TENGO TU LOVE",
     "url_image": "../../public/images/tengo-tu-love.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/tengo-tu-love-gif.gif",
     "slug": "test"
   },
   {
     "name": "DELAY - “COVER” UNA CITA",
     "url_image": "../../public/images/aliklados.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/una-cita-gif.gif",
     "slug": "test"
   },
   {
     "name": "DEMENTE - TRAILER",
     "url_image": "../../public/images/corto.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/demente-trailer-gif.gif",
     "slug": "test"
   },
   {
     "name": "NO SE HABLA DE BRUNO “COVER”",
     "url_image": "../../public/images/no-se-habla-de-bruno.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/no-se-habla-de-bruno-gif.gif",
     "slug": "test"
   },
   {
     "name": "ANGELA - “COVER” ROLLING IN THE DEEP",
     "url_image": "../../public/images/adele.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/angela-rolling-in-the-deep-gif.gif",
     "slug": "test"
   },
   {
     "name": "MUGY - FKTV",
     "url_image": "../../public/images/FKTV.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/MUGY-FKTV-gif.gif",
     "slug": "test"
   },
   {
     "name": "JORDAN - SIN RENCORES",
     "url_image": "../../public/images/jordan-sin-rencores.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/JORDAN-sin-rencores-gif.gif",
     "slug": "test"
   },
   {
     "name": "DOS ORUGUITAS “COVER”",
     "url_image": "../../public/images/dos-oruguitas.png",
-    "url_gift": "https://ligthelm.work/static/img/i-am-you.gif",
+    "url_gift": "../../public/images/gifs/dos-oruguitas-gif.gif",
     "slug": "test"
   }
   
