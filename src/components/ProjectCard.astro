@@ -16,7 +16,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   "../../public/images/*.{jpeg,jpg,png,gif}"
 );
 
-if (!images[image] || !images[gif])
+if (!images[image])
   throw new Error(
     `"${image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
   );
@@ -26,12 +26,10 @@ const optimizedBackgroundImage = await getImage({
   format: "avif",
 });
 
-// const optimizedBackgroundGif = await getImage({
-//   src: images[gif](),
-//   format: "git",
-// });
-
-// console.log(optimizedBackgroundGif.src);
+const optimizedBackgroundGif = await getImage({
+  src: images[gif](),
+  format: "webp",
+});
 ---
 
 <div
@@ -58,7 +56,7 @@ const optimizedBackgroundImage = await getImage({
       </div>
       <div
         class="project-card__gif w-full h-full"
-        style={`background-image: url(${gif});`}
+        style={`background-image: url(${optimizedBackgroundGif.src});`}
       >
       </div>
     </div>
