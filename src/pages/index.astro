@@ -1,6 +1,12 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro";
+// Layouts
 import Layout from "../layouts/Layout.astro";
+
+// Components
+import ProjectCard from "../components/ProjectCard.astro";
+import Splash from "../components/Splash.astro";
+
+// Data
 import projectsData from "../data/projects.json";
 ---
 
@@ -20,4 +26,5 @@ import projectsData from "../data/projects.json";
       }
     </section>
   </main>
+  <Splash />
 </Layout>

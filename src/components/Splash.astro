@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div
+  class="splash h-screen flex items-center bg-black w-full fixed top-0 text-white transition-opacity"
+>
+  <div class="spash__container">
+    <div class="splash__content">
+      <Image
+        src="/images/splash.gif"
+        alt="Splash Screen"
+        width="2000"
+        height="150"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  // Find our component DOM on the page.
+  const splashScreen: HTMLElement | null = document.querySelector(".splash");
+
+  // Validate if the component is on the page.
+  if (splashScreen) {
+    // When the page is fully loaded and pass three seconds, hide the splash screen with trnasition.
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        splashScreen.style.opacity = "0";
+        setTimeout(() => {
+          splashScreen.style.display = "none";
+        }, 1000);
+      }, 4500);
+    });
+  }
+</script>
