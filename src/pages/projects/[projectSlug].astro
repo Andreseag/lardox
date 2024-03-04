@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { YouTube } from "astro-embed";
+
+// Data
+import projects from "../../data/projects.json";
+
+export function getStaticPaths() {
+  return [
+    { params: { projectSlug: "showreel-2023" } },
+    { params: { projectSlug: "delay-cover-tengo-tu-love" } },
+    { params: { projectSlug: "delay-cover-tabaco-y-chanel" } },
+    { params: { projectSlug: "delay-cover-una-cita" } },
+    { params: { projectSlug: "demente-trailer" } },
+    { params: { projectSlug: "no-se-habla-de-bruno-cover" } },
+    { params: { projectSlug: "angela-cover-rolling-in-the-deep" } },
+    { params: { projectSlug: "jordan-sin-rencores" } },
+    { params: { projectSlug: "dos-oruguitas-cover" } },
+    { params: { projectSlug: "mugy-fktv" } },
+  ];
+}
+
+const { projectSlug } = Astro.params;
+// const projectData = await Astro.fetchContent(`../../data/${project}.json`)
+//   .then((res) => res.json())
+//   .catch((err) => {
+//     console.error(err);
+//     return {};
+//   });
+
+const project = projects.find((project: any) => project.slug === projectSlug);
+---
+
+<Layout title="Information" />
+
+<section class="project">
+  <div
+    class="project__container text-white w-full flex justify-center items-center"
+  >
+    <YouTube
+      id={project?.url_video ?? ""}
+      class="w-full max-w-[98%] md:max-w-[90%] 2xl:max-w-[1400px]"
+    />
+  </div>
+</section>
+
+<style lang="scss">
+  .project__container {
+    height: calc(80vh - 109px);
+  }
+</style>
