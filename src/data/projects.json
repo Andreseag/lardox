@@ -2,6 +2,7 @@
   {
     "name": "SHOWREEL 2023 ",
     "url_image": "../../public/images/showreel.png",
+    "url_image_project": "../../../public/images/showreel.png",
     "url_gift": "../../public/images/showreel-gif.gif",
     "slug": "showreel-2023",
     "url_video": "https://youtu.be/xSNt3gx7e5o"
@@ -9,6 +10,7 @@
   {
     "name": "DELAY - “COVER” TABACO Y CHANEL",
     "url_image": "../../public/images/tabaco-y-chanel.png",
+    "url_image_project": "../../../public/images/tabaco-y-chanel.png",
     "url_gift": "../../public/images/tabaco-y-chanel-gif.gif",
     "slug": "delay-cover-tabaco-y-chanel",
     "url_video": "https://youtu.be/WidE-RQ3ngw"
@@ -16,6 +18,7 @@
   {
     "name": "DELAY - “COVER” TENGO TU LOVE",
     "url_image": "../../public/images/tengo-tu-love.png",
+    "url_image_project": "../../../public/images/tengo-tu-love.png",
     "url_gift": "../../public/images/tengo-tu-love-gif.gif",
     "slug": "delay-cover-tengo-tu-love",
     "url_video": "https://youtu.be/BFgBokr09xc"
@@ -23,6 +26,7 @@
   {
     "name": "DELAY - “COVER” UNA CITA",
     "url_image": "../../public/images/aliklados.png",
+    "url_image_project": "../../../public/images/aliklados.png",
     "url_gift": "../../public/images/una-cita-gif.gif",
     "slug": "delay-cover-una-cita",
     "url_video": "https://youtu.be/zsMtvwdhr2g"
@@ -30,6 +34,7 @@
   {
     "name": "DEMENTE - TRAILER",
     "url_image": "../../public/images/corto.png",
+    "url_image_project": "../../../public/images/corto.png",
     "url_gift": "../../public/images/demente-trailer-gif.gif",
     "slug": "demente-trailer",
     "url_video": "https://youtu.be/qlTnj8ftJkY"
@@ -37,12 +42,14 @@
   {
     "name": "NO SE HABLA DE BRUNO “COVER”",
     "url_image": "../../public/images/no-se-habla-de-bruno.png",
+    "url_image_project": "../../../public/images/no-se-habla-de-bruno.png",
     "url_gift": "../../public/images/no-se-habla-de-bruno-gif.gif",
     "slug": "no-se-habla-de-bruno-cover",
     "url_video": "https://youtu.be/sRNxpe868P4"
   },
   {
     "name": "ANGELA - “COVER” ROLLING IN THE DEEP",
+    "url_image": "../../public/images/adele.png",
     "url_image": "../../public/images/adele.png",
     "url_gift": "../../public/images/angela-rolling-in-the-deep-gif.gif",
     "slug": "angela-cover-rolling-in-the-deep",

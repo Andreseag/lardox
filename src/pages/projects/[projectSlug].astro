@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { YouTube } from "astro-embed";
+import { getImage } from "astro:assets";
+import { Image } from "astro:assets";
 
 // Data
 import projects from "../../data/projects.json";
@@ -20,15 +22,28 @@ export function getStaticPaths() {
   ];
 }
 
+// Get props to pass to the component
 const { projectSlug } = Astro.params;
-// const projectData = await Astro.fetchContent(`../../data/${project}.json`)
-//   .then((res) => res.json())
-//   .catch((err) => {
-//     console.error(err);
-//     return {};
-//   });
 
+// Get data for the current project
 const project = projects.find((project: any) => project.slug === projectSlug);
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../../../public/images/*.{jpeg,jpg,png,gif}"
+);
+
+const srcImage = `../${project?.url_image}`.toString();
+
+if (!images[srcImage])
+  throw new Error(
+    `"${project?.url_image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+  );
+const optimizedBackgroundImage = await getImage({
+  src: images[srcImage](),
+  format: "avif",
+});
+
+//
 ---
 
 <Layout title="Information" />
@@ -37,6 +52,20 @@ const project = projects.find((project: any) => project.slug === projectSlug);
   <div
     class="project__container text-white w-full flex justify-center items-center"
   >
+    <!-- <div class="project__image__portada absolute w-full z-20 h-screen">
+      <Image
+        src={optimizedBackgroundImage.src}
+        alt={project?.name ?? "Image"}
+        class="w-full h-full object-cover object-center"
+        width={600}
+        height={400}
+      />
+      <button
+        class="absolute m-auto top-[50%] left-[50%] bg-black h-11 w-36 text-white text-lg font-medium rounded-lg transform -translate-x-1/2 -translate-y-1/2 hover:underline"
+        >Play</button
+      >
+    </div> -->
+
     <YouTube
       id={project?.url_video ?? ""}
       class="w-full max-w-[98%] md:max-w-[90%] 2xl:max-w-[1400px]"
