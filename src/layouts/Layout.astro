@@ -11,12 +11,55 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <!-- Título del sitio web -->
+    <title>LARDOX - Productora de Videos Profesionales</title>
+
+    <!-- Meta etiquetas esenciales -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LARDOX es una productora de videos especializada en la creación de contenido audiovisual de alta calidad para empresas, marcas y creadores de contenido."
+    />
+    <meta
+      name="keywords"
+      content="LARDOX, productora de videos, producción de videos, contenido audiovisual, videos profesionales, marketing de videos, producción audiovisual"
+    />
+    <meta name="author" content="LARDOX" />
+
+    <!-- Open Graph para redes sociales -->
+    <meta
+      property="og:title"
+      content="LARDOX - Productora de Videos Profesionales"
+    />
+    <meta
+      property="og:description"
+      content="Expertos en producción de videos de alta calidad para tus proyectos."
+    />
+    <meta
+      property="og:image"
+      content="https://scontent.fbog2-5.fna.fbcdn.net/v/t39.30808-6/271895075_2849300895359796_1495535374678720888_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGNAhnPNaIaB_m8HbTPgEsHpcbtcspLLl2lxu1yyksuXT_eCys69gCsvb1JqY4nuYc&_nc_ohc=OiJTOpXzCkIQ7kNvgGQ6WKq&_nc_ht=scontent.fbog2-5.fna&oh=00_AYDoXA-DiOGxCQAnIkK4-eKa-RdiD4_u5fCzIfEXzqVmAA&oe=66D51DB6"
+    />
+    <meta property="og:url" content="https://www.lardox.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card para redes sociales -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="LARDOX - Productora de Videos Profesionales"
+    />
+    <meta
+      name="twitter:description"
+      content="Descubre la calidad en producción de videos con LARDOX."
+    />
+    <meta
+      name="twitter:image"
+      content="https://scontent.fbog2-5.fna.fbcdn.net/v/t39.30808-6/271895075_2849300895359796_1495535374678720888_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGNAhnPNaIaB_m8HbTPgEsHpcbtcspLLl2lxu1yyksuXT_eCys69gCsvb1JqY4nuYc&_nc_ohc=OiJTOpXzCkIQ7kNvgGQ6WKq&_nc_ht=scontent.fbog2-5.fna&oh=00_AYDoXA-DiOGxCQAnIkK4-eKa-RdiD4_u5fCzIfEXzqVmAA&oe=66D51DB6"
+    />
   </head>
   <body>
     <Header />
