@@ -1,0 +1,121 @@
+---
+const projects = [
+  {
+    id: 1,
+    title: "SYNTHETIC RUNWAY",
+    category: "ia",
+    client: "Moda Global",
+    impact: "Reducción de 80% en tiempos de producción",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
+    tags: ["IA Generativa", "Text-to-Video", "Modelos Sintéticos"]
+  },
+  {
+    id: 2,
+    title: "NEO NEURAL COMMERCIAL",
+    category: "ia",
+    client: "Tech Brand X",
+    impact: "Entornos fotorrealistas generados por red neuronal",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop",
+    tags: ["Deep Learning", "Upscaling IA", "CGI Sintético"]
+  },
+  {
+    id: 3,
+    title: "FUTURISTIC AUTOMOTIVE AI",
+    category: "ia",
+    client: "Motor Corp",
+    impact: "Casting y locaciones 100% virtuales con IA",
+    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1000&auto=format&fit=crop",
+    tags: ["Video Generativo", "Composición IA", "Automotriz"]
+  }
+];
+---
+
+<section class="w-full 2xl:w-11/12 mx-auto px-4 py-20 mt-28 text-white">
+  
+  {/* Encabezado */}
+  <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-neutral-900 pb-8 mb-12 gap-6">
+    <div>
+      <span class="text-xs font-mono uppercase tracking-[0.4em] text-neutral-500 block mb-3">
+        [ VANGUARDIA TECNOLÓGICA ]
+      </span>
+      <h2 class="text-4xl md:text-6xl font-light tracking-tight uppercase">
+        Inteligencia <span class="text-neutral-500">Artificial.</span>
+      </h2>
+    </div>
+
+    {/* Filtros de IA */}
+    <div id="showcase-filter-container" class="flex flex-wrap gap-4 text-xs font-mono uppercase tracking-widest">
+      <button data-filter="all" class="showcase-filter-btn text-white pb-1 border-b-2 border-white transition-all cursor-pointer uppercase">Todos</button>
+      <button data-filter="generative" class="showcase-filter-btn text-neutral-500 hover:text-white pb-1 border-b-2 border-transparent transition-all cursor-pointer uppercase">Video Generativo</button>
+      <button data-filter="neural" class="showcase-filter-btn text-neutral-500 hover:text-white pb-1 border-b-2 border-transparent transition-all cursor-pointer uppercase">Redes Neuronales</button>
+      <button data-filter="synthetic" class="showcase-filter-btn text-neutral-500 hover:text-white pb-1 border-b-2 border-transparent transition-all cursor-pointer uppercase">Entornos Sintéticos</button>
+    </div>
+  </div>
+
+  {/* Grid de Casos IA */}
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="showcase-grid">
+    {projects.map((project) => (
+      <article 
+        class="showcase-item group cursor-pointer space-y-4 bg-neutral-950 p-4 transition-all hover:border-neutral-700"
+        data-category={project.category}
+      >
+        <div class="w-full h-80 overflow-hidden relative bg-neutral-900">
+          <img 
+            src={project.image} 
+            alt={project.title}
+            class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+          />
+          <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1 text-[10px] font-mono tracking-widest text-white border border-neutral-800">
+            {project.impact}
+          </span>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <div class="flex justify-between items-center text-xs font-mono text-neutral-500">
+            <span>{project.client}</span>
+            <span>2026</span>
+          </div>
+          <h3 class="text-2xl font-light tracking-tight uppercase group-hover:text-neutral-300 transition-colors">
+            {project.title}
+          </h3>
+          <div class="flex flex-wrap gap-2 pt-2">
+            {project.tags.map(tag => (
+              <span class="text-[10px] font-mono tracking-wider uppercase text-neutral-400 bg-neutral-900 px-2.5 py-1">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+</section>
+
+<script>
+  const sFilterBtns = document.querySelectorAll('.showcase-filter-btn');
+  const sItems = document.querySelectorAll('.showcase-item');
+
+  sFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sFilterBtns.forEach(b => {
+        b.classList.remove('text-white', 'border-white');
+        b.classList.add('text-neutral-500', 'border-transparent');
+      });
+      btn.classList.remove('text-neutral-500', 'border-transparent');
+      btn.classList.add('text-white', 'border-white');
+
+      const filter = btn.getAttribute('data-filter');
+
+      sItems.forEach(item => {
+        const category = item.getAttribute('data-category');
+        const el = item as HTMLElement;
+        if (filter === 'all' || category === filter) {
+          el.style.display = 'block';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

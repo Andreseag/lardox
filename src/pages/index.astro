@@ -9,46 +9,83 @@ import Splash from "../components/Splash.astro";
 // Data
 import projectsData from "../data/projects.json";
 
-const categories = ["Todos", "VFX", "Motion Design", "Videos Musicales"];
+// Pestañas en mayúsculas estrictas
+const categories = ["TODOS", "VFX", "MOTION DESIGN", "VIDEOS MUSICALES", "IA"];
 
 const categorizedProjects = projectsData.map((project) => {
-  let assignedCategory = "Videos Musicales";
+  let assignedCategory = "VIDEOS MUSICALES";
+  
   if (project.slug.includes("demente") || project.slug.includes("showreel")) {
     assignedCategory = "VFX";
   } else if (project.slug.includes("mugy") || project.slug.includes("jordan")) {
-    assignedCategory = "Motion Design";
+    assignedCategory = "MOTION DESIGN";
+  } else if (project.slug.includes("ai") || project.slug.includes("synthetic") || project.slug.includes("neural")) {
+    assignedCategory = "IA";
   }
+  
   return { ...project, category: assignedCategory };
 });
 ---
 
-<Layout title="Welcome to Astro.">
-  <main class="mx-4 flex flex-col items-center">
+<Layout title="LARDOX - Productora de Videos, VFX & IA">
+  <main class="w-full flex flex-col items-center pb-20 overflow-hidden">
     
-    {/* --- SECCIÓN DE TABS (Minimalista B&W) --- */}
-    <nav class="flex flex-wrap justify-center gap-3 mt-16 mb-12" aria-label="Categorías">
-      {categories.map((cat, index) => (
-        <button
-          class={`tab-btn px-5 py-2 text-xs tracking-widest uppercase transition-all duration-300 cursor-pointer ${
-            index === 0 
-              ? "bg-white text-black font-semibold" 
-              : "bg-transparent text-neutral-400 hover:text-neutral-600"
-          }`}
-          data-category={cat}
-        >
-          {cat}
-        </button>
-      ))}
-    </nav>
+    {/* --- SECCIÓN 0: CINEMATIC HERO (Animación de entrada lenta y pesada) --- */}
+    <section class="w-full 2xl:w-11/12 mx-auto px-4 pt-28 pb-16 border-b border-neutral-900 flex flex-col justify-between">
+      <div class="space-y-6">
+        <span class="text-xs font-mono uppercase tracking-[0.4em] text-neutral-500 block hero-elem-1">
+          [ VFX, VIDEO & INTELIGENCIA ARTIFICIAL ]
+        </span>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter uppercase text-white leading-none hero-elem-2">
+          DIRECCIÓN <span class="text-neutral-600 transition-colors duration-700 hover:text-white">DE VANGUARDIA</span> & ALGORITMOS.
+        </h1>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mt-14 pt-8 border-t border-neutral-900/60 gap-6 hero-elem-3">
+        <p class="text-neutral-400 text-sm md:text-base font-light max-w-xl leading-relaxed">
+          Fusionamos rodajes de alta gama, postproducción avanzada y modelos de inteligencia artificial generativa para crear piezas visuales que redefinen la industria publicitaria y musical.
+        </p>
+        <a href="#portfolio" class="text-xs font-mono uppercase tracking-widest text-neutral-400 hover:text-white transition-colors duration-500 flex items-center gap-2 group cursor-pointer">
+          EXPLORAR TRABAJOS <span class="transform group-hover:translate-y-1.5 transition-transform duration-500">↓</span>
+        </a>
+      </div>
+    </section>
 
-    {/* --- GRILLA DE PROYECTOS --- */}
+    {/* --- SECCIÓN 2: TABS DE PORTAFOLIO --- */}
+    <div id="portfolio" class="w-full 2xl:w-11/12 mx-auto px-4 mt-16 border-t border-neutral-900 pt-16 scroll-reveal">
+      <div class="text-center space-y-3 mb-8">
+        <span class="text-xs font-mono uppercase tracking-[0.4em] text-neutral-500 block">
+          [ ARCHIVO DE TRABAJOS ]
+        </span>
+        <h2 class="text-3xl md:text-5xl font-light tracking-tight uppercase text-white">
+          Explora nuestro <span class="text-neutral-500">Portafolio.</span>
+        </h2>
+      </div>
+
+      <nav class="flex flex-wrap justify-center gap-3 mb-12" aria-label="Categorías">
+        {categories.map((cat, index) => (
+          <button
+            class={`tab-btn px-6 py-2.5 text-xs tracking-widest uppercase transition-all duration-700 cursor-pointer ${
+              index === 0 
+                ? "bg-white text-black font-semibold shadow-[0_0_30px_rgba(255,255,255,0.1)]" 
+                : "bg-transparent text-neutral-400 hover:text-white border border-neutral-900 hover:border-neutral-700"
+            }`}
+            data-category={cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </nav>
+    </div>
+
+    {/* --- SECCIÓN 3: GRILLA DE PROYECTOS (Transiciones y aparición escalonada) --- */}
     <section
-      class="project-list w-full 2xl:w-11/12 grid grid-cols-2 md:grid-cols-4 gap-6 mt-4"
+      class="project-list w-full 2xl:w-11/12 px-4 grid grid-cols-2 md:grid-cols-4 gap-6 mt-4"
     >
       {
         categorizedProjects.map((project, i) => (
           <div 
-            class="project-item transition-all duration-500 ease-in-out transform scale-100 opacity-100"
+            class="project-item transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform opacity-100 scroll-reveal"
+            style={`transition-delay: ${(i % 4) * 120}ms;`}
             data-category={project.category}
           >
             <ProjectCard
@@ -62,65 +99,147 @@ const categorizedProjects = projectsData.map((project) => {
         ))
       }
     </section>
+
+    {/* --- SECCIÓN 4: BLOQUE DE CIERRE CTA --- */}
+    <section class="w-full 2xl:w-11/12 mx-auto px-4 py-28 border-t border-neutral-900 mt-20 text-center scroll-reveal">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <span class="text-xs font-mono uppercase tracking-[0.4em] text-neutral-500 block">
+          [ ¿INICIAMOS UN NUEVO PROYECTO? ]
+        </span>
+        <h2 class="text-4xl md:text-6xl font-light tracking-tight uppercase text-white transition-all duration-700">
+          <a href="/contact" class="inline-flex items-center gap-4 group">
+            HABLEMOS DE TU PRÓXIMA PRODUCCIÓN 
+            <span class="text-neutral-500 transform group-hover:translate-x-2.5 group-hover:-translate-y-2.5 transition-transform duration-700">↗</span>
+          </a>
+        </h2>
+        <p class="text-neutral-500 text-xs font-mono tracking-widest uppercase">
+          BOGOTÁ — DISPONIBLE PARA PROYECTOS GLOBALES
+        </p>
+      </div>
+    </section>
+
   </main>
   <Splash />
 </Layout>
 
-{/* --- SCRIPT DE TRANSICIÓN Y CONTROL DE ESTILOS B&W --- */}
+{/* --- ESTILOS DE MOTION GRAPHICS (Lentos, pesados y de alta gama) --- */}
+<style>
+  /* Entrada escalonada del Hero */
+  .hero-elem-1 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cinematicIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  }
+
+  .hero-elem-2 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cinematicIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
+
+  .hero-elem-3 {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: cinematicIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  }
+
+  @keyframes cinematicIn {
+    0% {
+      opacity: 0;
+      transform: translateY(35px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scroll Reveal lento y solemne */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+{/* --- SCRIPT DE FILTRADO CON TRANSICIÓN FLUIDA LENTA --- */}
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // 1. Intersection Observer para el Scroll Reveal
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll(".scroll-reveal").forEach(el => {
+      observer.observe(el);
+    });
+
+    // 2. Transición de Pestañas con tiempos largos y orgánicos (800ms)
     const buttons = document.querySelectorAll(".tab-btn");
     const items = document.querySelectorAll(".project-item");
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
-        // Evitar múltiples clics mientras se anima el botón activo actual
         if (button.classList.contains("bg-white")) return;
 
-        // Cambiar estilos visuales minimalistas de los botones
         buttons.forEach((btn) => {
-          btn.classList.remove("bg-white", "text-black", "font-semibold");
-          btn.classList.add("bg-transparent", "text-neutral-400", "hover:text-neutral-600");
+          btn.classList.remove("bg-white", "text-black", "font-semibold", "shadow-[0_0_30px_rgba(255,255,255,0.1)]");
+          btn.classList.add("bg-transparent", "text-neutral-400", "hover:text-white", "border", "border-neutral-900", "hover:border-neutral-700");
         });
 
-        button.classList.remove("bg-transparent", "text-neutral-400", "hover:text-neutral-600");
-        button.classList.add("bg-white", "text-black", "font-semibold");
+        button.classList.remove("bg-transparent", "text-neutral-400", "hover:text-white", "border", "border-neutral-900", "hover:border-neutral-700");
+        button.classList.add("bg-white", "text-black", "font-semibold", "shadow-[0_0_30px_rgba(255,255,255,0.1)]");
 
         const selectedCategory = button.getAttribute("data-category");
 
-        // PASO 1: Desvanecer y reducir TODOS los elementos a la vez
+        // Fase 1: Desvanecimiento suave hacia abajo
         items.forEach((item) => {
           const el = item as HTMLElement;
           el.style.opacity = "0";
-          el.style.transform = "scale(0.95)";
+          el.style.transform = "translateY(25px) scale(0.98)";
           el.style.pointerEvents = "none";
         });
 
-        // PASO 2: Esperar a que termine la animación de salida (300ms) para cambiar cuáles se muestran
+        // Fase 2: Pausa deliberada de 800ms antes de conmutar el DOM
         setTimeout(() => {
           items.forEach((item) => {
             const itemCategory = item.getAttribute("data-category");
             const el = item as HTMLElement;
 
-            if (selectedCategory === "Todos" || itemCategory === selectedCategory) {
+            if (selectedCategory === "TODOS" || itemCategory === selectedCategory) {
               el.style.display = "block";
             } else {
               el.style.display = "none";
             }
           });
 
-          // PASO 3: Hacer aparecer (fade in) solo los elementos filtrados
           requestAnimationFrame(() => {
             items.forEach((item) => {
               const el = item as HTMLElement;
               if (el.style.display === "block") {
                 el.style.opacity = "1";
-                el.style.transform = "scale(1)";
+                el.style.transform = "translateY(0) scale(1)";
                 el.style.pointerEvents = "auto";
               }
             });
           });
-        }, 300); 
+        }, 800); 
       });
     });
   });

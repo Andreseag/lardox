@@ -3,20 +3,54 @@ import { Image } from "astro:assets";
 import myImage from "../../public/images/Logo-LARDOX.png";
 ---
 
-<header class="header flex justify-center">
+<header class="header flex justify-center overflow-hidden">
   <div
     class="header__container w-11/12 flex justify-between items-center mt-10"
   >
-    <div class="header__contact text-white text-sm md:text-lg hover:underline">
+    <div class="header__contact text-white text-sm md:text-lg hover:underline header-elem-1">
       <a href="/contact">CONTACTO</a>
     </div>
-    <div class="header__logo w-[180px] sm:w-[200px] md:w-[420px] max-w-[420px]">
-      <a href="/" class="header__logo-link">
+    
+    <div class="header__logo w-[180px] sm:w-[200px] md:w-[420px] max-w-[420px] header-elem-2">
+      <a href="/" class="header__logo-link block transform transition-transform duration-700 hover:scale-[1.02]">
         <Image src={myImage} alt="Logo" />
       </a>
     </div>
-    <div class="header__info text-white text-sm md:text-lg hover:underline">
+    
+    <div class="header__info text-white text-sm md:text-lg hover:underline header-elem-3">
       <a href="/information">INFO</a>
     </div>
   </div>
 </header>
+
+{/* --- ESTILOS DE ENTRADA CINEMATOGRÁFICA PARA EL HEADER --- */}
+<style>
+  .header-elem-1 {
+    opacity: 0;
+    transform: translateY(-15px);
+    animation: headerCinematicIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  }
+
+  .header-elem-2 {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: headerCinematicIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  }
+
+  .header-elem-3 {
+    opacity: 0;
+    transform: translateY(-15px);
+    animation: headerCinematicIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
+
+  @keyframes headerCinematicIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-25px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
