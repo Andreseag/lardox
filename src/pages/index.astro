@@ -8,25 +8,120 @@ import Splash from "../components/Splash.astro";
 
 // Data
 import projectsData from "../data/projects.json";
+
+const categories = ["Todos", "VFX", "Motion Design", "Videos Musicales"];
+
+const categorizedProjects = projectsData.map((project) => {
+  let assignedCategory = "Videos Musicales";
+  if (project.slug.includes("demente") || project.slug.includes("showreel")) {
+    assignedCategory = "VFX";
+  } else if (project.slug.includes("mugy") || project.slug.includes("jordan")) {
+    assignedCategory = "Motion Design";
+  }
+  return { ...project, category: assignedCategory };
+});
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="mx-4 flex justify-center">
+  <main class="mx-4 flex flex-col items-center">
+    
+    {/* --- SECCIÓN DE TABS (Minimalista B&W) --- */}
+    <nav class="flex flex-wrap justify-center gap-3 mt-16 mb-12" aria-label="Categorías">
+      {categories.map((cat, index) => (
+        <button
+          class={`tab-btn px-5 py-2 text-xs tracking-widest uppercase transition-all duration-300 cursor-pointer ${
+            index === 0 
+              ? "bg-white text-black font-semibold" 
+              : "bg-transparent text-neutral-400 hover:text-neutral-600"
+          }`}
+          data-category={cat}
+        >
+          {cat}
+        </button>
+      ))}
+    </nav>
+
+    {/* --- GRILLA DE PROYECTOS --- */}
     <section
-      class="project-list w-full 2xl:w-11/12 grid grid-cols-2 md:grid-cols-4 gap-4 mt-20"
+      class="project-list w-full 2xl:w-11/12 grid grid-cols-2 md:grid-cols-4 gap-6 mt-4"
     >
       {
-        projectsData.map((project, i) => (
-          <ProjectCard
-            href={project.slug}
-            title={project.name}
-            image={project.url_image}
-            gif={project.url_gift}
-            index={i}
-          />
+        categorizedProjects.map((project, i) => (
+          <div 
+            class="project-item transition-all duration-500 ease-in-out transform scale-100 opacity-100"
+            data-category={project.category}
+          >
+            <ProjectCard
+              href={project.slug}
+              title={project.name}
+              image={project.url_image}
+              gif={project.url_gift}
+              index={i}
+            />
+          </div>
         ))
       }
     </section>
   </main>
   <Splash />
 </Layout>
+
+{/* --- SCRIPT DE TRANSICIÓN Y CONTROL DE ESTILOS B&W --- */}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".tab-btn");
+    const items = document.querySelectorAll(".project-item");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Evitar múltiples clics mientras se anima el botón activo actual
+        if (button.classList.contains("bg-white")) return;
+
+        // Cambiar estilos visuales minimalistas de los botones
+        buttons.forEach((btn) => {
+          btn.classList.remove("bg-white", "text-black", "font-semibold");
+          btn.classList.add("bg-transparent", "text-neutral-400", "hover:text-neutral-600");
+        });
+
+        button.classList.remove("bg-transparent", "text-neutral-400", "hover:text-neutral-600");
+        button.classList.add("bg-white", "text-black", "font-semibold");
+
+        const selectedCategory = button.getAttribute("data-category");
+
+        // PASO 1: Desvanecer y reducir TODOS los elementos a la vez
+        items.forEach((item) => {
+          const el = item as HTMLElement;
+          el.style.opacity = "0";
+          el.style.transform = "scale(0.95)";
+          el.style.pointerEvents = "none";
+        });
+
+        // PASO 2: Esperar a que termine la animación de salida (300ms) para cambiar cuáles se muestran
+        setTimeout(() => {
+          items.forEach((item) => {
+            const itemCategory = item.getAttribute("data-category");
+            const el = item as HTMLElement;
+
+            if (selectedCategory === "Todos" || itemCategory === selectedCategory) {
+              el.style.display = "block";
+            } else {
+              el.style.display = "none";
+            }
+          });
+
+          // PASO 3: Hacer aparecer (fade in) solo los elementos filtrados
+          requestAnimationFrame(() => {
+            items.forEach((item) => {
+              const el = item as HTMLElement;
+              if (el.style.display === "block") {
+                el.style.opacity = "1";
+                el.style.transform = "scale(1)";
+                el.style.pointerEvents = "auto";
+              }
+            });
+          });
+        }, 300); 
+      });
+    });
+  });
+</script>
