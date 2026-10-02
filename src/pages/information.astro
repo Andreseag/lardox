@@ -5,8 +5,21 @@ import Layout from "../layouts/Layout.astro";
 // Components
 import Splash from "../components/Splash.astro";
 
-// Data
-import informationData from "../data/information.data.json";
+// Data institucional actualizada del estudio
+const infoParagraphs = [
+  {
+    tag: "[ SOBRE EL ESTUDIO ]",
+    text: "Fundado en 2020 y liderado por el director Daniel Forero, LARDOX Studios es una casa productora y de postproducción enfocada en redefinir el estándar audiovisual comercial. Fusionamos el rigor del rodaje cinematográfico con la tecnología visual de última generación para crear piezas que rompen los límites de la producción tradicional."
+  },
+  {
+    tag: "[ VANGUARDIA: MOTION DESIGN & IA ]",
+    text: "No solo filmamos; expandimos la realidad. Nos especializamos en Motion Design avanzado, CGI, efectos visuales (VFX) y flujos de trabajo con Inteligencia Artificial generativa. Esta capacidad técnica interna nos permite resolver proyectos de alta complejidad, desde simulaciones 3D hasta la creación de entornos virtuales y narrativas impulsadas por algoritmos."
+  },
+  {
+    tag: "[ IMPACTO & CLIENTES ]",
+    text: "Nuestro enfoque en la excelencia técnica y estética nos ha consolidado como un aliado estratégico para marcas que exigen un nivel internacional. Hemos desarrollado propuestas y piezas visuales de alto perfil para clientes globales y marcas emergentes de gran impacto, incluyendo campañas y comerciales para HP y ¡Dios Mío! Coffee, entregando siempre resultados donde la innovación visual es la protagonista."
+  }
+];
 ---
 
 <Layout title="INFO | LARDOX">
@@ -25,16 +38,21 @@ import informationData from "../data/information.data.json";
         </h1>
       </div>
 
-      {/* Columna Derecha: Contenido con animación escalonada */}
-      <div class="w-full lg:w-2/3 space-y-8 info-elem-2">
+      {/* Columna Derecha: Contenido con bloques y animación escalonada */}
+      <div class="w-full lg:w-2/3 space-y-12 info-elem-2">
         {
-          informationData.map((item, index) => (
-            <p 
-              class="text-xl md:text-2xl font-light text-neutral-300 leading-relaxed scroll-reveal"
+          infoParagraphs.map((item, index) => (
+            <div 
+              class="space-y-3 scroll-reveal"
               style={`transition-delay: ${index * 150}ms;`}
             >
-              {item.description}
-            </p>
+              <span class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 block">
+                {item.tag}
+              </span>
+              <p class="text-xl md:text-2xl font-light text-neutral-300 leading-relaxed">
+                {item.text}
+              </p>
+            </div>
           ))
         }
       </div>

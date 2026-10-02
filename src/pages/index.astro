@@ -10,7 +10,7 @@ import Splash from "../components/Splash.astro";
 import projectsData from "../data/projects.json";
 
 // Pestañas en mayúsculas estrictas
-const categories = ["TODOS", "VFX", "MOTION DESIGN", "VIDEOS MUSICALES", "IA"];
+const categories = ["TODOS", "MOTION DESIGN", "IA", "VFX", "Shortfilms", "Publicidad"];
 
 const categorizedProjects = projectsData.map((project) => {
   let assignedCategory = "VIDEOS MUSICALES";
@@ -30,28 +30,42 @@ const categorizedProjects = projectsData.map((project) => {
 <Layout title="LARDOX - Productora de Videos, VFX & IA">
   <main class="w-full flex flex-col items-center pb-20 overflow-hidden">
     
-    {/* --- SECCIÓN 0: CINEMATIC HERO (Animación de entrada lenta y pesada) --- */}
-    <section class="w-full 2xl:w-11/12 mx-auto px-4 pt-28 pb-16 border-b border-neutral-900 flex flex-col justify-between">
-      <div class="space-y-6">
-        <span class="text-xs font-mono uppercase tracking-[0.4em] text-neutral-500 block hero-elem-1">
-          [ VFX, VIDEO & INTELIGENCIA ARTIFICIAL ]
+    {/* --- SECCIÓN 0: CINEMATIC VIDEO HERO (Fondo en loop limpio) --- */}
+    <section class="relative mt-12 w-full h-[90vh] 2xl:h-[85vh] 2xl:w-11/12 mx-auto px-6 md:px-16 flex flex-col justify-between pt-32 pb-16 overflow-hidden border-b border-neutral-900 rounded-b-3xl">
+      
+      {/* Video Background */}
+      <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        {/* Capas de contraste mucho más suaves */}
+        <div class="absolute inset-0 bg-black/15 z-10 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 z-10 pointer-events-none"></div>
+
+        <div id="hero-video-wrapper" class="video-bg">
+          <div id="yt-player"></div>
+        </div>
+      </div>
+
+      {/* Contenido del Hero (Por encima del video) */}
+      <div class="relative z-20 space-y-6">
+        <span class="text-xs font-mono uppercase tracking-[0.4em] text-neutral-400 block hero-elem-1">
+          [ VIDEO, VFX, MOTION DESIGN, AI VIDEO ]
         </span>
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter uppercase text-white leading-none hero-elem-2">
-          DIRECCIÓN <span class="text-neutral-600 transition-colors duration-700 hover:text-white">DE VANGUARDIA</span> & ALGORITMOS.
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter uppercase text-white leading-none hero-elem-2 drop-shadow-2xl">
+          VISIÓN <span class="text-neutral-400 transition-colors duration-700 hover:text-white">CINEMATOGRÁFICA</span> <br> & FUTURO VISUAL <br> EXPANDIDO.
         </h1>
       </div>
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mt-14 pt-8 border-t border-neutral-900/60 gap-6 hero-elem-3">
-        <p class="text-neutral-400 text-sm md:text-base font-light max-w-xl leading-relaxed">
-          Fusionamos rodajes de alta gama, postproducción avanzada y modelos de inteligencia artificial generativa para crear piezas visuales que redefinen la industria publicitaria y musical.
+
+      <div class="relative z-20 flex flex-col md:flex-row justify-between items-start md:items-end pt-8 border-t border-neutral-800/80 gap-6 hero-elem-3">
+        <p class="text-neutral-300 text-sm md:text-base font-light max-w-xl leading-relaxed drop-shadow">
+          Dirección cinematográfica, VFX y narrativa digital impulsada por modelos avanzados de video con inteligencia artificial.
         </p>
-        <a href="#portfolio" class="text-xs font-mono uppercase tracking-widest text-neutral-400 hover:text-white transition-colors duration-500 flex items-center gap-2 group cursor-pointer">
+        <a href="#portfolio" class="text-xs font-mono uppercase tracking-widest text-neutral-300 hover:text-black hover:bg-white hover:border-white transition-all duration-500 flex items-center gap-2 group cursor-pointer bg-black/40 px-5 py-2.5 rounded-full border border-neutral-800 backdrop-blur-md">
           EXPLORAR TRABAJOS <span class="transform group-hover:translate-y-1.5 transition-transform duration-500">↓</span>
         </a>
       </div>
     </section>
 
     {/* --- SECCIÓN 2: TABS DE PORTAFOLIO --- */}
-    <div id="portfolio" class="w-full 2xl:w-11/12 mx-auto px-4 mt-16 border-t border-neutral-900 pt-16 scroll-reveal">
+    <div id="portfolio" class="w-full 2xl:w-11/12 mx-auto px-4 mt-20 border-t border-neutral-900 pt-16 scroll-reveal">
       <div class="text-center space-y-3 mb-8">
         <span class="text-xs font-mono uppercase tracking-[0.4em] text-neutral-500 block">
           [ ARCHIVO DE TRABAJOS ]
@@ -100,7 +114,7 @@ const categorizedProjects = projectsData.map((project) => {
       }
     </section>
 
-    {/* --- SECCIÓN 4: BLOQUE DE CIERRE CTA --- */}
+    {/* --- SECCIÓN 4: BLOQUE DE CIERRE CTA & REDES SOCIALES --- */}
     <section class="w-full 2xl:w-11/12 mx-auto px-4 py-28 border-t border-neutral-900 mt-20 text-center scroll-reveal">
       <div class="max-w-4xl mx-auto space-y-8">
         <span class="text-xs font-mono uppercase tracking-[0.4em] text-neutral-500 block">
@@ -112,6 +126,52 @@ const categorizedProjects = projectsData.map((project) => {
             <span class="text-neutral-500 transform group-hover:translate-x-2.5 group-hover:-translate-y-2.5 transition-transform duration-700">↗</span>
           </a>
         </h2>
+
+        {/* ICONOS DE REDES SOCIALES REDONDOS Y CENTRADOS */}
+        <div class="flex justify-center items-center gap-4 pt-2">
+          {/* Instagram */}
+          <a 
+            href="https://www.instagram.com/lardox_studios/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Instagram"
+            class="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-black hover:bg-white hover:border-white transition-all duration-500"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+            </svg>
+          </a>
+
+          {/* YouTube */}
+          <a 
+            href="https://www.youtube.com/@Lardox" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="YouTube"
+            class="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-black hover:bg-white hover:border-white transition-all duration-500"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+              <path d="m10 15 5-3-5-3z"/>
+            </svg>
+          </a>
+
+          {/* Facebook */}
+          <a 
+            href="https://www.facebook.com/lardox" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Facebook"
+            class="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-black hover:bg-white hover:border-white transition-all duration-500"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+
         <p class="text-neutral-500 text-xs font-mono tracking-widest uppercase">
           BOGOTÁ — DISPONIBLE PARA PROYECTOS GLOBALES
         </p>
@@ -122,8 +182,35 @@ const categorizedProjects = projectsData.map((project) => {
   <Splash />
 </Layout>
 
-{/* --- ESTILOS DE MOTION GRAPHICS (Lentos, pesados y de alta gama) --- */}
+{/* --- ESTILOS DE MOTION GRAPHICS Y VIDEO DE FONDO --- */}
 <style>
+  /* Posicionamiento fluido sin escalas que distorsionen elementos de YouTube */
+  .video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 */
+  min-height: 100vh;
+  min-width: 177.77vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.video-bg.is-playing {
+  opacity: 1;
+}
+
+/* El iframe lo crea la API dinámicamente, por eso :global */
+:global(.video-bg iframe) {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+}
+
   /* Entrada escalonada del Hero */
   .hero-elem-1 {
     opacity: 0;
@@ -167,7 +254,7 @@ const categorizedProjects = projectsData.map((project) => {
   }
 </style>
 
-{/* --- SCRIPT DE FILTRADO CON TRANSICIÓN FLUIDA LENTA --- */}
+{/* --- SCRIPT DE FILTRADO Y OBSERVADORES --- */}
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // 1. Intersection Observer para el Scroll Reveal
@@ -242,5 +329,45 @@ const categorizedProjects = projectsData.map((project) => {
         }, 800); 
       });
     });
+
+    // 0. Video de fondo con YouTube IFrame API (sin controles)
+const videoId = "GgalGlKM3mc";
+const videoWrapper = document.getElementById("hero-video-wrapper");
+
+const ytScript = document.createElement("script");
+ytScript.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(ytScript);
+
+(window as any).onYouTubeIframeAPIReady = () => {
+  new (window as any).YT.Player("yt-player", {
+    videoId,
+    playerVars: {
+      autoplay: 1,
+      mute: 1,
+      controls: 0,
+      disablekb: 1,
+      fs: 0,
+      iv_load_policy: 3,
+      modestbranding: 1,
+      playsinline: 1,
+      rel: 0,
+      cc_load_policy: 0,
+      loop: 1,
+      playlist: videoId,
+    },
+    events: {
+      onReady: (e: any) => {
+        e.target.mute();
+        e.target.playVideo();
+      },
+      onStateChange: (e: any) => {
+        // 1 = reproduciendo, 2 = pausa, 0 = terminó
+        if (e.data === 1) videoWrapper?.classList.add("is-playing");
+        if (e.data === 2) videoWrapper?.classList.remove("is-playing");
+        if (e.data === 0) e.target.playVideo(); // refuerzo del loop
+      },
+    },
+  });
+};
   });
 </script>
