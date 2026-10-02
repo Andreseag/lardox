@@ -1,26 +1,74 @@
 [
   {
-    "name": "SHOWREEL 2023",
-    "url_image": "../../public/images/showreel.png",
-    "url_gift": "../../public/images/showreel-gif.gif",
-    "slug": "showreel-2023",
-    "url_video": "https://youtu.be/xSNt3gx7e5o",
-    "category": "VFX"
+    "name": "MOTION DESIGN 01",
+    "url_image": "https://img.youtube.com/vi/_2FfqLo3ZVI/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/_2FfqLo3ZVI/maxresdefault.jpg",
+    "slug": "motion-design-01",
+    "url_video": "https://youtu.be/_2FfqLo3ZVI",
+    "category": "MOTION DESIGN"
   },
   {
-    "name": "MUGY - FKTV",
-    "url_image": "../../public/images/FKTV.png",
-    "url_gift": "../../public/images/MUGY-FKTV-gif.gif",
-    "slug": "mugy-fktv",
-    "url_video": "https://youtu.be/cKY0kq-5jVI",
-    "category": "Motion Design"
+    "name": "IA 01",
+    "url_image": "https://img.youtube.com/vi/RvOfbkfHc3E/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/RvOfbkfHc3E/maxresdefault.jpg",
+    "slug": "ia-01",
+    "url_video": "https://youtu.be/RvOfbkfHc3E",
+    "category": "IA"
   },
   {
-    "name": "DELAY - “COVER” TABACO Y CHANEL",
-    "url_image": "../../public/images/tabaco-y-chanel.png",
-    "url_gift": "../../public/images/tabaco-y-chanel-gif.gif",
-    "slug": "delay-cover-tabaco-y-chanel",
-    "url_video": "https://youtu.be/WidE-RQ3ngw",
-    "category": "Videos Musicales"
+    "name": "IA 02",
+    "url_image": "https://img.youtube.com/vi/ateRg87F2Fo/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/ateRg87F2Fo/maxresdefault.jpg",
+    "slug": "ia-02",
+    "url_video": "https://youtu.be/ateRg87F2Fo",
+    "category": "IA"
+  },
+  {
+    "name": "VIDEO MUSICAL 01",
+    "url_image": "https://img.youtube.com/vi/LNUptIYXwEU/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/LNUptIYXwEU/maxresdefault.jpg",
+    "slug": "video-musical-01",
+    "url_video": "https://youtu.be/LNUptIYXwEU",
+    "category": "VIDEOS MUSICALES"
+  },
+  {
+    "name": "VIDEO MUSICAL 02",
+    "url_image": "https://img.youtube.com/vi/nf5kUm3jl3A/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/nf5kUm3jl3A/maxresdefault.jpg",
+    "slug": "video-musical-02",
+    "url_video": "https://youtu.be/nf5kUm3jl3A",
+    "category": "VIDEOS MUSICALES"
+  },
+  {
+    "name": "VIDEO MUSICAL 03",
+    "url_image": "https://img.youtube.com/vi/X1NtRJoMHvU/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/X1NtRJoMHvU/maxresdefault.jpg",
+    "slug": "video-musical-03",
+    "url_video": "https://youtu.be/X1NtRJoMHvU",
+    "category": "VIDEOS MUSICALES"
+  },
+  {
+    "name": "VIDEO MUSICAL 05",
+    "url_image": "https://img.youtube.com/vi/sRNxpe868P4/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/sRNxpe868P4/maxresdefault.jpg",
+    "slug": "video-musical-05",
+    "url_video": "https://youtu.be/sRNxpe868P4",
+    "category": "VIDEOS MUSICALES"
+  },
+  {
+    "name": "SHORTFILM 01",
+    "url_image": "https://img.youtube.com/vi/qlTnj8ftJkY/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/qlTnj8ftJkY/maxresdefault.jpg",
+    "slug": "shortfilm-01",
+    "url_video": "https://youtu.be/qlTnj8ftJkY",
+    "category": "SHORTFILMS"
+  },
+  {
+    "name": "PUBLICIDAD 01",
+    "url_image": "https://img.youtube.com/vi/jr4vEaYqSdI/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/jr4vEaYqSdI/maxresdefault.jpg",
+    "slug": "publicidad-01",
+    "url_video": "https://youtube.com/shorts/jr4vEaYqSdI",
+    "category": "PUBLICIDAD"
   }
 ]

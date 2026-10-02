@@ -6,7 +6,7 @@ interface Props {
   href: string;
   title: string;
   image: string;
-  gif: string;
+  gif?: string;
   index: number;
 }
 
@@ -16,49 +16,66 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   "../../public/images/*.{jpeg,jpg,png,gif}"
 );
 
-if (!images[image])
-  throw new Error(
-    `"${image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
-  );
+const isRemote = (src?: string) => !!src && /^https?:\/\//.test(src);
 
-const optimizedBackgroundImage = await getImage({
-  src: images[image](),
-  format: "avif",
-});
+/**
+ * Resuelve la fuente de una imagen:
+ * - URL remota (ej. miniatura de YouTube): se usa tal cual.
+ * - Ruta local: se busca en el glob y se optimiza con getImage.
+ * - Vacía/undefined: devuelve null (el elemento no se renderiza).
+ */
+async function resolveSrc(
+  src: string | undefined,
+  format: "avif" | "webp"
+): Promise<string | null> {
+  if (!src) return null;
+  if (isRemote(src)) return src;
 
-const optimizedBackgroundGif = await getImage({
-  src: images[gif](),
-  format: "webp",
-});
+  if (!images[src]) {
+    throw new Error(
+      `"${src}" does not exist in glob: "../../public/images/*.{jpeg,jpg,png,gif}"`
+    );
+  }
+
+  const optimized = await getImage({ src: images[src](), format });
+  return optimized.src;
+}
+
+const imageSrc = await resolveSrc(image, "avif");
+const gifSrc = await resolveSrc(gif, "webp");
 ---
 
 <div
-  class:list={[
-    "project-card flex items-stretch",
-    { big: index === 6 || index === 14 },
-  ]}
+  class="project-card flex items-stretch"
+   
 >
   <a
     href={`projects/${href}`}
     class="cursor-pointer w-full flex flex-col justify-stretch relative"
   >
-    <h3 class="project-card__title text-white mb-1">
+    <h3 class="project-card__title text-white mb-1 uppercase line-clamp-1">
       <span class="mr-3">0{index + 1}</span>{" "}
       {title}
     </h3>
     <div
       class="project-card__images relative overflow-hidden h-full text-white text-sm"
     >
-      <div
-        class="project-card__image w-full h-full"
-        style={`background-image: url(${optimizedBackgroundImage.src});`}
-      >
-      </div>
-      <div
-        class="project-card__gif w-full h-full"
-        style={`background-image: url(${optimizedBackgroundGif.src});`}
-      >
-      </div>
+      {
+        imageSrc && (
+          <div
+            class="project-card__image w-full h-full"
+            style={`background-image: url(${imageSrc});`}
+          />
+        )
+      }
+      {
+        gifSrc && (
+          <div
+            class="project-card__gif w-full h-full"
+            style={`background-image: url(${gifSrc});`}
+          />
+        )
+      }
     </div>
   </a>
 </div>

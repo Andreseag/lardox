@@ -1,73 +1,31 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { YouTube } from "astro-embed";
-import { getImage } from "astro:assets";
-import { Image } from "astro:assets";
-
-// Data
 import projects from "../../data/projects.json";
+import { getYouTubeId, getYouTubeTitle } from "../../utils/youtube";
 
+// Una ruta por cada proyecto del JSON: agregar un video allá crea su página automáticamente
 export function getStaticPaths() {
-  return [
-    { params: { projectSlug: "showreel-2023" } },
-    // { params: { projectSlug: "delay-cover-tengo-tu-love" } },
-    { params: { projectSlug: "delay-cover-tabaco-y-chanel" } },
-    // { params: { projectSlug: "delay-cover-una-cita" } },
-    // { params: { projectSlug: "demente-trailer" } },
-    // { params: { projectSlug: "no-se-habla-de-bruno-cover" } },
-    // { params: { projectSlug: "angela-cover-rolling-in-the-deep" } },
-    // { params: { projectSlug: "jordan-sin-rencores" } },
-    // { params: { projectSlug: "dos-oruguitas-cover" } },
-    { params: { projectSlug: "mugy-fktv" } },
-  ];
+  return projects.map((project) => ({
+    params: { projectSlug: project.slug },
+    props: { project },
+  }));
 }
 
-// Get props to pass to the component
-const { projectSlug } = Astro.params;
+const { project } = Astro.props;
 
-// Get data for the current project
-const project = projects.find((project: any) => project.slug === projectSlug);
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "../../../public/images/*.{jpeg,jpg,png,gif}"
-);
-
-const srcImage = `../${project?.url_image}`.toString();
-
-if (!images[srcImage])
-  throw new Error(
-    `"${project?.url_image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
-  );
-const optimizedBackgroundImage = await getImage({
-  src: images[srcImage](),
-  format: "avif",
-});
-
-//
+const title = await getYouTubeTitle(project.url_video, project.name);
+const videoId = getYouTubeId(project.url_video);
 ---
 
-<Layout title="Information" />
+<Layout title={title} />
 
-<section class="project">
+<section class="project mt-28">
   <div
     class="project__container text-white w-full flex justify-center items-center"
   >
-    <!-- <div class="project__image__portada absolute w-full z-20 h-screen">
-      <Image
-        src={optimizedBackgroundImage.src}
-        alt={project?.name ?? "Image"}
-        class="w-full h-full object-cover object-center"
-        width={600}
-        height={400}
-      />
-      <button
-        class="absolute m-auto top-[50%] left-[50%] bg-black h-11 w-36 text-white text-lg font-medium rounded-lg transform -translate-x-1/2 -translate-y-1/2 hover:underline"
-        >Play</button
-      >
-    </div> -->
-
     <YouTube
-      id={project?.url_video ?? ""}
+      id={videoId}
       class="w-full max-w-[98%] md:max-w-[90%] 2xl:max-w-[1400px]"
     />
   </div>

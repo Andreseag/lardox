@@ -1,4 +1,5 @@
 ---
+
 // Layouts
 import Layout from "../layouts/Layout.astro";
 
@@ -8,23 +9,34 @@ import Splash from "../components/Splash.astro";
 
 // Data
 import projectsData from "../data/projects.json";
+import { getYouTubeTitle } from "../utils/youtube";
 
-// Pestañas en mayúsculas estrictas
-const categories = ["TODOS", "MOTION DESIGN", "IA", "VFX", "Shortfilms", "Publicidad"];
+// Pestañas: deben coincidir EXACTAMENTE con el "category" del JSON (todo en mayúsculas)
+const categories = [
+  "TODOS",
+  "MOTION DESIGN",
+  "IA",
+  "VFX",
+  "VIDEOS MUSICALES",
+  "SHORTFILMS",
+  "PUBLICIDAD",
+];
 
-const categorizedProjects = projectsData.map((project) => {
-  let assignedCategory = "VIDEOS MUSICALES";
-  
-  if (project.slug.includes("demente") || project.slug.includes("showreel")) {
-    assignedCategory = "VFX";
-  } else if (project.slug.includes("mugy") || project.slug.includes("jordan")) {
-    assignedCategory = "MOTION DESIGN";
-  } else if (project.slug.includes("ai") || project.slug.includes("synthetic") || project.slug.includes("neural")) {
-    assignedCategory = "IA";
-  }
-  
-  return { ...project, category: assignedCategory };
-});
+// Cache en memoria para no repetir peticiones (útil en `astro dev`)
+
+/**
+ * Obtiene el título real del video desde YouTube (oEmbed).
+ * Si falla (sin internet, video privado, límite de peticiones), usa el nombre del JSON.
+ */
+
+
+const categorizedProjects = await Promise.all(
+  projectsData.map(async (project) => ({
+    ...project,
+    name: await getYouTubeTitle(project.url_video, project.name),
+    category: (project.category ?? "").toUpperCase().trim(),
+  }))
+);
 ---
 
 <Layout title="LARDOX - Productora de Videos, VFX & IA">
