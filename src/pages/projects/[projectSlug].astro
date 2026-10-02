@@ -20,9 +20,9 @@ const videoId = getYouTubeId(project.url_video);
 
 <Layout title={title} />
 
-<section class="project mt-28">
+<section class="project md:mt-24">
   <div
-    class="project__container text-white w-full flex justify-center items-center"
+    class="project__container text-white w-full flex justify-center items-start md:items-center"
   >
     <YouTube
       id={videoId}
@@ -33,6 +33,11 @@ const videoId = getYouTubeId(project.url_video);
 
 <style lang="scss">
   .project__container {
-    height: calc(80vh - 109px);
+    padding-top: 1rem;
+
+    @media (min-width: 768px) {
+      padding-top: 0;
+      height: calc(80vh - 109px);
+    }
   }
 </style>
