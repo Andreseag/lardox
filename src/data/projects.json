@@ -70,5 +70,13 @@
     "slug": "publicidad-01",
     "url_video": "https://youtube.com/shorts/jr4vEaYqSdI",
     "category": "PUBLICIDAD"
+  },
+  {
+    "name": "PUBLICIDAD 02",
+    "url_image": "https://img.youtube.com/vi/hdQiuV_arIw/maxresdefault.jpg",
+    "url_gift": "https://img.youtube.com/vi/hdQiuV_arIw/maxresdefault.jpg",
+    "slug": "publicidad-02",
+    "url_video": "https://youtube.com/shorts/hdQiuV_arIw",
+    "category": "PUBLICIDAD"
   }
 ]
